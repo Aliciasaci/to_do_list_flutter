@@ -24,17 +24,23 @@ class TaskDetails extends StatelessWidget {
       content: SingleChildScrollView(
         child: ListBody(
           children: <Widget>[
+            const Divider(
+              color: Color.fromARGB(255, 71, 64, 64)
+            ), 
             Text(task!.content,
                 style: const TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                 )),
             const SizedBox(height: 10),
-            Text(task!.createdAt.toString().substring(1, 19)),
+            Text(task!.createdAt.toString().substring(0, 19)),
+                 const Divider(
+                 color: Color.fromARGB(255, 71, 64, 64)
+            ),  
             const SizedBox(height: 10),
             task!.completed
                 ? const Text('status : done',
-                    style: TextStyle(color: Color.fromARGB(255, 54, 244, 86)))
+                    style: TextStyle(color: Color.fromARGB(255, 35, 175, 58)))
                 : const Text('status : not done',
                     style: TextStyle(color: Color.fromARGB(255, 197, 25, 25)))
           ],
@@ -42,7 +48,7 @@ class TaskDetails extends StatelessWidget {
       ),
       actions: <Widget>[
         TextButton(
-          child: const Text('ok'),
+          child: const Text('Back'),
           onPressed: () {
             onClosed();
           },
@@ -65,7 +71,3 @@ class TaskDetails extends StatelessWidget {
   }
 }
 
-
-/*Si l'utilisateur clique sur le bouton de suppression, la Task concernée doit-être
-supprimée et les données du composant TaskMaster mises à jour. Enfin, le
-composant TaskDetails doit être masqué */

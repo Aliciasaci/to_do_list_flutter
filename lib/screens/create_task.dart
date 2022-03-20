@@ -27,7 +27,7 @@ class _CreateTaskState extends State<CreateTask> {
         elevation: 0.0,
       ),
       body:
-          Consumer<TasksCollection>(builder: (context, tasksCollection, child) {
+          Consumer<TasksCollection>(builder: (contRext, tasksCollection, child) {
             return TaskForm(
             taskToUpdate: null,
             onChangeTask: (newTask) {

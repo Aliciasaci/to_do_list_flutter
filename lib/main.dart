@@ -39,6 +39,3 @@ class TodoList extends StatelessWidget {
 }
 
 
-//one task contient le task forme
-//les données sont passé de task details à one task pour les afficher dans le formulaire de modification.
-//Create task contient un formulaire de création d'une task.

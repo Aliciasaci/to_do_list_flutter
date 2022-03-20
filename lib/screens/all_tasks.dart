@@ -23,6 +23,15 @@ class _AllTasksState extends State<AllTasks> {
   List<Task> tasks = data.tasks;
   Task? chosenTask;
 
+  //Appel au provider pour charger les données.
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
+      Provider.of<TasksCollection>(context, listen: false).getAllTasksFromAPI();
+    });
+  }
+
   void _updateTask(){
   }
   //Récuperer la task envoyé depuis PreviewTask
@@ -51,7 +60,7 @@ class _AllTasksState extends State<AllTasks> {
           elevation: 0.0,
         ),
         body: Visibility(
-            child: TaskMaster(tasks: tasks, onClickTask: onClickTask),
+            child: TaskMaster(tasks: tasksCollection.getAllTasks(), onClickTask: onClickTask),
             visible: (chosenTask == null),
             replacement: TaskDetails(
                 task: chosenTask,
@@ -101,24 +110,3 @@ class _AllTasksState extends State<AllTasks> {
 
 
 
-  // void onDelete() {
-  //   final snackBar = SnackBar(
-  //     content: const Text('Are you sure you wanna delete?'),
-  //     duration: const Duration(seconds: 3),
-  //     backgroundColor: Color.fromARGB(255, 231, 193, 22),
-  //     action: SnackBarAction(
-  //       label: 'Yes',
-  //       textColor: Colors.white,
-  //       onPressed: () {
-  //         context.read<TasksCollection>().delete(chosenTask!.id);
-  //         ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-  //           content: Text('Deleted'),
-  //         ));
-  //         onClosed();
-  //       },
-  //     ),
-  //   );
-
-  //   // Appelle la snack bar
-  //   ScaffoldMessenger.of(context).showSnackBar(snackBar);
-  // }

@@ -1,10 +1,17 @@
-class Task{
+import 'package:json_annotation/json_annotation.dart';
+
+part 'task.g.dart';
+
+@JsonSerializable()
+class Task {
   int id;
   String content;
-  bool completed;    //détermine si la tâche a été réalisée ou non
-  DateTime createdAt;
+  bool completed;
+  DateTime? createdAt;
 
-  //You create a Dart class constructor by adding a class method with the same name as the class itself. Often, constructors take parameters to initialize member variables:
+  Task(this.id, this.content, this.completed, this.createdAt);
 
-    Task(this.id,this.content,this.completed,this.createdAt);
+  factory Task.fromJson(Map<String, dynamic> json) {
+    return Task(json['id'], json['title'], json['completed'], DateTime.now());
+  }
 }

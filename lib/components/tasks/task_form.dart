@@ -32,7 +32,7 @@ class _TaskFormState extends State<TaskForm> {
     return Consumer<TasksCollection>(
         builder: (context, tasksCollection, child) {
       return Padding(
-        padding: const EdgeInsets.fromLTRB(20.0, 70.0, 20.0, 0),
+        padding: const EdgeInsets.fromLTRB(20.0, 200.0, 20.0, 0),
         child: widget.taskToUpdate != null
             ? Form(
                 key: _formKey,
@@ -46,7 +46,6 @@ class _TaskFormState extends State<TaskForm> {
                           _taskStatus = newValue!;
                         });
                       },
-                      shape: const CircleBorder(side: BorderSide(width: 2)),
                     ),
                     TextFormField(
                       controller: taskContentController,
@@ -54,7 +53,18 @@ class _TaskFormState extends State<TaskForm> {
                         fillColor: Color.fromARGB(255, 230, 228, 228),
                         filled: true,
                         prefixIcon: Icon(Icons.edit),
-                        border: OutlineInputBorder(),
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Color.fromARGB(255, 107, 107, 104),
+                            width: 1.0,
+                          ),
+                        ),
+                       focusedBorder: OutlineInputBorder(
+                         borderSide : BorderSide(
+                           color :  Color.fromARGB(255, 231, 193, 22),
+                           width : 1.0,
+                         ),
+                       ),
                       ),
                       validator: (value) {
                         if (value == null || value.isEmpty) {
@@ -66,6 +76,8 @@ class _TaskFormState extends State<TaskForm> {
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 18.0),
                       child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                            primary: const Color.fromARGB(255, 231, 193, 22)),
                         onPressed: () {
                           if (_formKey.currentState!.validate()) {
                             widget.onChangeTask(Task(
@@ -77,12 +89,13 @@ class _TaskFormState extends State<TaskForm> {
                             ScaffoldMessenger.of(context).hideCurrentSnackBar();
                             ScaffoldMessenger.of(context).showSnackBar(
                               const SnackBar(
-                                  content: Text(
-                                      'Une tâche vient d\'être mise à jours')),
+                                  backgroundColor:
+                                      Color.fromARGB(255, 231, 193, 22),
+                                  content: Text('A task has been updated')),
                             );
                           }
                         },
-                        child: const Text('Modifier'),
+                        child: const Text('Save'),
                       ),
                     ),
                   ],
@@ -99,7 +112,18 @@ class _TaskFormState extends State<TaskForm> {
                         fillColor: Color.fromARGB(255, 230, 228, 228),
                         filled: true,
                         prefixIcon: Icon(Icons.edit),
-                        border: OutlineInputBorder(),
+                         enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Color.fromARGB(255, 107, 107, 104),
+                            width: 1.0,
+                          ),
+                        ),
+                         focusedBorder: OutlineInputBorder(
+                         borderSide : BorderSide(
+                           color :  Color.fromARGB(255, 231, 193, 22),
+                           width : 1.0,
+                         ),
+                       ),
                         labelText: 'Your task_',
                       ),
                       validator: (value) {
@@ -112,6 +136,8 @@ class _TaskFormState extends State<TaskForm> {
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 18.0),
                       child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                            primary: const Color.fromARGB(255, 231, 193, 22)),
                         onPressed: () {
                           if (_formKey.currentState!.validate()) {
                             widget.onChangeTask(Task(
@@ -123,12 +149,11 @@ class _TaskFormState extends State<TaskForm> {
                             ScaffoldMessenger.of(context).hideCurrentSnackBar();
                             ScaffoldMessenger.of(context).showSnackBar(
                               const SnackBar(
-                                  content:
-                                      Text('Une tâche vient d\'être créee')),
+                                  content: Text('A task has been created')),
                             );
                           }
                         },
-                        child: const Text('Créer'),
+                        child: const Text('Create'),
                       ),
                     ),
                   ],
