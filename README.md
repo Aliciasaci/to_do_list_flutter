@@ -2,9 +2,8 @@
 
 A new Flutter project.
 
-## Travail individuelle. 
-Alicia SACI
+## Travail individuelle par ALICIA SACI
 
-#### Avancement du projet : 
+### Avancement du projet : 
   #### Récuparation des données depuis l'API: fait.
   
